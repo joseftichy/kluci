@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day Counter</title>
+</head>
+<body>
+    <p>JOSEF... <span id="startDateJosef">od 2024-25-06</span>: dnu   <span id="dayCounterJosef">0</span></p>
+    <p>STANDA... <span id="startDateStanda">od 2024-25-05</span>: dnu   <span id="dayCounterStanda">0</span></p>
+
+    <script>
+        function updateDayCounter(startDateString, dayCounterElementId) {
+            const startDate = new Date(startDateString);
+            const dayCounterElement = document.getElementById(dayCounterElementId);
+            const currentDate = new Date();
+            const timeDifference = currentDate - startDate;
+            const daysPassed = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            dayCounterElement.textContent = daysPassed;
+        }
+
+        // Initial update
+        updateDayCounter('2024-06-25', 'dayCounterJosef');
+        updateDayCounter('2024-05-25', 'dayCounterStanda');
+
+        // Update every second (adjust as needed)
+        setInterval(function() {
+            updateDayCounter('2024-06-25', 'dayCounterJosef');
+            updateDayCounter('2024-05-25', 'dayCounterStanda');
+        }, 1000);
+    </script>
+</body>
+</html>
